@@ -1,0 +1,18 @@
+[package]
+name = "miscompile"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies]
+esp32s3-hal = "0.10.0"
+esp-backtrace = { version = "0.7.0", features = ["esp32s3", "panic-handler", "exception-handler", "print-jtag-serial"] }
+esp-println = { version = "0.5.0", default_features = false, features = ["esp32s3", "jtag_serial", ] }
+
+ahrs = { version = "0.6" , default_features = false}
+nalgebra = { version = "0.31" ,default_features = false}
+
+[profile.release]
+codegen-units = 1
+debug = true
+lto = false
